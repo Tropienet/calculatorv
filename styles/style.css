@@ -28,3 +28,49 @@ header {
     display: flex;
     flex-direction: column;
 }
+
+#display {
+    text-align: right;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+}
+
+button {
+    padding: 10px 17px;
+    border-radius: 10px;
+    border: 1px solid #0f1108;
+    transition: all 0.1s ease-in;
+    box-shadow: 3px 3px grey; 
+}
+
+.operation:hover {
+    transform: scale(1.1) perspective(1px);
+}
+
+.operation {
+    background-color: #EAEAEA;
+    color: #1b1725;
+}
+
+.equals {
+    background-image: linear-gradient(0deg, rgb(168, 117, 21), orange);
+    color: white;
+}
+
+.number {
+    background-color: #555358;
+    color: #C9DCB3;
+}
+
+.number:active {
+    background-color: #C9DCB3;
+    color:#555358;
+}
+
+.number:hover {
+    transform: scale(1.1) perspective(1px);
+}
