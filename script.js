@@ -16,3 +16,9 @@ let calculator = {
     },
 
 }
+
+function operate( operator, number1, number2 ) {
+    
+    return calculator[`${operator}`]( number1, number2) ;
+
+}
