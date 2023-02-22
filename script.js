@@ -171,6 +171,17 @@ function createFloatButton() {
     })
 }
 
+function createClearButton() {
+    const clearButton = document.querySelector("#clear");
+
+    clearButton.addEventListener("click", () => {
+        DISPLAY.textContent = 0;
+        currentNumber = 0;
+        storedNumber = 0;
+    })
+}
+
+createClearButton();
 createFloatButton();
 createOperatorButtons();
 createNumberButtons();

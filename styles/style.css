@@ -58,6 +58,15 @@ header {
     gap: 7px;
 }
 
+#clear {
+    grid-column: 1/-1;
+    transition: all 0.1s ease-in-out;
+}
+
+#clear:hover {
+    transform: scale(1.1) perspective(1px);
+}
+
 button {
     font-family: "Digital7", sans-serif;
     padding: 10px 17px;
