@@ -30,13 +30,26 @@ header {
 }
 
 .calculator-container {
+    background-color: silver;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    margin: 100px;
+    padding: 50px 20px;
+    border-radius: 15px;
+    border: solid 2px black;
+    box-shadow: 10px 10px grey;
 }
 
 #display {
     text-align: right;
     font-family: "Digital7", sans-serif;
+    background-color: green;
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 5px;
+    border: solid 1px black;
+    box-shadow: 5px 5px grey;
 }
 
 .button-container {
