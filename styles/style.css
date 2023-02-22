@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Digital7";
+    src: url("../fonts/digital-7.ttf") format("truetype");
+}
+
 * {
     box-sizing: border-box;
 }
@@ -31,6 +36,7 @@ header {
 
 #display {
     text-align: right;
+    font-family: "Digital7", sans-serif;
 }
 
 .button-container {
@@ -40,6 +46,7 @@ header {
 }
 
 button {
+    font-family: "Digital7", sans-serif;
     padding: 10px 17px;
     border-radius: 10px;
     border: 1px solid #0f1108;
