@@ -44,12 +44,16 @@ function createNumberButtons () {
     numbers.forEach(number => {
 
         number.addEventListener("click", () => {
+            
 
             if(checkForZero()) {
                 DISPLAY.textContent += number.textContent;
             }else{
                 DISPLAY.textContent = number.textContent
             }
+
+            currentNumber = parseInt(DISPLAY.textContent);
+            console.log(currentNumber)
 
         });
         
@@ -83,12 +87,13 @@ function createOperatorButtons() {
 
     function subtractNumbers() {
 
-        storedNumber -= parseInt(DISPLAY.textContent);
+            
+            storedNumber = parseInt(DISPLAY.textContent) - storedNumber;
 
-        DISPLAY.textContent = "0";
+            DISPLAY.textContent = "0";
 
-        currentOperator = "subtract";
-        
+            currentOperator = "subtract";
+
     }
 
     subtract.addEventListener("click", () => {
@@ -98,12 +103,19 @@ function createOperatorButtons() {
     });
 
     function multiplyNumbers() {
+        
+        if(storedNumber) {
 
         storedNumber *= parseInt(DISPLAY.textContent);
 
         DISPLAY.textContent = "0";
 
         currentOperator = "multiply";
+        } else {
+            storedNumber = parseInt(DISPLAY.textContent);
+            DISPLAY.textContent = "0";
+            currentOperator = "multiply";
+        }
     }
 
     multiply.addEventListener("click", () => {
@@ -114,12 +126,19 @@ function createOperatorButtons() {
 
     function divideNumbers() {
 
-        storedNumber /= parseInt(DISPLAY.textContent);
 
-        DISPLAY.textContent = "0";
+        if(storedNumber) {
 
-        currentOperator = "divide";
+            storedNumber /= parseInt(DISPLAY.textContent);
 
+            DISPLAY.textContent = "0";
+
+            currentOperator = "divide";
+        } else {
+            storedNumber = parseInt(DISPLAY.textContent);
+            DISPLAY.textContent = "0";
+            currentOperator = "divide";
+        }
     }
 
     divide.addEventListener("click", () => {
@@ -129,7 +148,7 @@ function createOperatorButtons() {
     })
 
     function displayFinalResult() {
-
+        console.log(storedNumber);
         DISPLAY.textContent = `${operate(currentOperator, storedNumber, parseInt(DISPLAY.textContent))}`;
         storedNumber = 0;
     }
@@ -142,6 +161,16 @@ function createOperatorButtons() {
 
 }
 
+function createFloatButton() {
 
+    const floatButton = document.querySelector(".float");
+
+
+    floatButton.addEventListener("click", () => {
+        DISPLAY.textContent += ".";
+    })
+}
+
+createFloatButton();
 createOperatorButtons();
 createNumberButtons();
