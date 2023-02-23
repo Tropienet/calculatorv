@@ -2,7 +2,7 @@ const DISPLAY = document.querySelector("#display");
 
 let currentNumber = parseFloat(DISPLAY.textContent);
 let storedNumber = parseFloat(DISPLAY.textContent);
-let currentOperator = "";
+let currentOperator = 0;
 
 let calculator = {
 
@@ -69,15 +69,52 @@ function createOperatorButtons() {
     const divide = document.querySelector(".divide");
     const equals = document.querySelector(".equals");
 
+    function checkForCurrentOperator (newOperator) {
+
+        function changeOperator () { 
+                storedNumber= operate(currentOperator, storedNumber, currentNumber);
+                DISPLAY.textContent = `${storedNumber}`;
+                currentNumber = 0;
+                currentOperator = newOperator;
+        }
+
+        function updateOperator() {
+            
+                storedNumber = currentNumber;
+                currentNumber = 0;
+                currentOperator = newOperator;
+                console.log("The default works");
+        }
+
+        currentOperator ? changeOperator() : updateOperator(); //Updated solution (change updateOperator function name to something more descriptive)
+
+        /* First solution 
+        switch (currentOperator)  {
+            case "add":
+                changeOperator();
+                break;
+            case "subtract":
+                changeOperator();
+                break;
+            case "multiply":
+                changeOperator();
+                break;
+            case "divide":
+                changeOperator();
+                break;
+            default:
+                storedNumber = currentNumber;
+                currentNumber = 0;
+                currentOperator = newOperator;
+                console.log("The default works");
+        } */
+
+
+    }
+
     function addNumbers() {
 
-        storedNumber += currentNumber;
-
-        DISPLAY.textContent = `${storedNumber}`;
-
-        currentNumber = 0;
-
-        currentOperator = "add";
+        checkForCurrentOperator( "add");
 
     }
 
@@ -90,11 +127,7 @@ function createOperatorButtons() {
     function subtractNumbers() {
 
             
-            storedNumber = parseFloat(DISPLAY.textContent) - storedNumber;
-
-            DISPLAY.textContent = "0";
-
-            currentOperator = "subtract";
+           checkForCurrentOperator("subtract");
 
     }
 
@@ -106,18 +139,8 @@ function createOperatorButtons() {
 
     function multiplyNumbers() {
         
-        if(storedNumber) {
+       checkForCurrentOperator("multiply");
 
-        storedNumber *= parseFloat(DISPLAY.textContent);
-
-        DISPLAY.textContent = "0";
-
-        currentOperator = "multiply";
-        } else {
-            storedNumber = parseFloat(DISPLAY.textContent);
-            DISPLAY.textContent = "0";
-            currentOperator = "multiply";
-        }
     }
 
     multiply.addEventListener("click", () => {
@@ -128,19 +151,8 @@ function createOperatorButtons() {
 
     function divideNumbers() {
 
-
-        if(storedNumber) {
-
-            storedNumber /= parseFloat(DISPLAY.textContent);
-
-            DISPLAY.textContent = "0";
-
-            currentOperator = "divide";
-        } else {
-            storedNumber = parseFloat(DISPLAY.textContent);
-            DISPLAY.textContent = "0";
-            currentOperator = "divide";
-        }
+        checkForCurrentOperator("divide")
+     
     }
 
     divide.addEventListener("click", () => {
